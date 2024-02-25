@@ -1,5 +1,6 @@
 ﻿@using Markdig
 @using Markdig.Syntax
+@using System.Diagnostics
 @inject HttpClient Http
 @inject IJSRuntime JsRuntime
 @inject NavigationManager NavigationManager
@@ -207,11 +208,22 @@
         var pipeline = new MarkdownPipelineBuilder().UseAdvancedExtensions().Build();
         var document = Markdown.Parse(responseString, pipeline);
         responseString = document.Descendants<CodeBlock>().First().Lines.ToString();
-
-        // Some tags modify the content in a way where we need to replace them before rendering.
-        responseString = responseString.Replace("[date]", Helpers.GetCurrentDate());
-
+        
+        var stopWatch = new Stopwatch();
+        stopWatch.Start();
         var content = responseString.ToCharArray();
+        try
+        {
+            content = Helpers.ParseContent(responseString).ToCharArray();
+        }
+        catch (Exception e)
+        {
+            Console.Error.WriteLine($"Failed to parse content: {e.Message}");
+            IsLoading = false;
+            return;
+        }
+        stopWatch.Stop();
+        Console.WriteLine($"Parsing content took: {stopWatch.ElapsedMilliseconds}ms");
         var contentString = "";
         var currentSpeed = DefaultTextSpeed;
         var functionsToCall = new List<string>();
@@ -293,21 +305,6 @@
                             {
                                 await Console.Error.WriteLineAsync($"Invalid delay: {tagValue}");
                             }
-
-                            break;
-                        case "color":
-                            contentString += $"<span class=\"color-{tagValue}\">";
-                            break;
-                        case "block":
-                            if (tagValue == "none")
-                            {
-                                contentString += "<span></span>";
-                            }
-                            else
-                            {
-                                contentString += $"<span class=\"block block-{tagValue}\"></span>";
-                            }
-
                             break;
                         case "play":
                             await JsRuntime.InvokeVoidAsync("playAudio", tagValue, Id);
@@ -319,6 +316,8 @@
                             break;
 
                         default:
+                            i -= tag.Length; // Go back to the start of the tag.
+                            contentString += c;
                             await Console.Error.WriteLineAsync($"Unknown tag: {tagName}");
                             break;
                     }

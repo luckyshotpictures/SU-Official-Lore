@@ -2,14 +2,15 @@
 TITLE=File: Person/NATHAN-WILKERSON/Incident-23-02-2224
 BACKLINK=true
 ```
-Incident 23-02-2224
+[color=white]
+[color=info]Incident 23-02-2224[/color]
     By:         Commander Mildred
     Location:   Sector Umbra
     For:        Nathan Wilkerson (NT-L-9259::928)
 
-NOTE: This is a file scan. The formatting will be off.
+[block=info][color=info]NOTE:[/color] This is a file scan. The formatting will be off.[/block]
 
-[color=sys][speed=0]--- BEGIN FILE SCAN ---[speed=default]
+[color=sys][speed=0]--- BEGIN FILE SCAN ---[speed=default][/color]
 
 Commander Mildred Inspection Notes.
 
@@ -42,5 +43,7 @@ Service
 Security
 
 - Messy, as was the case with most departments aside from Cargo and Science. Noteably, howver, Perma was in an uninhabitable state.
-[color=sys][speed=0]--- END ---[speed=default]
+[color=sys][speed=0]--- END ---[speed=default][/color]
+
+[color=sys][speed=0]------------- End of file -------------[speed=default][/color][/color]
 ```

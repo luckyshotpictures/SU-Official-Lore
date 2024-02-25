@@ -36,4 +36,5 @@ Reading ID card[speed=250]...[speed=default]
 Loading user profile[speed=250]...[speed=default]
 Welcome.
 [load=Listing.md]
+[/color]
 ```

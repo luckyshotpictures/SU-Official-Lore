@@ -195,6 +195,11 @@ a::before {
     --glow-block: var(--glow-warning);
 }
 
+.block-info {
+    --fg-block: var(--fg-info);
+    --glow-block: var(--glow-info);
+}
+
 .block {
     padding-left: 2ch;
     position: relative;
@@ -209,6 +214,11 @@ a::before {
     width: 0.5ch;
     background: var(--fg-block);
     box-shadow: var(--glow-block);
+}
+
+.span.block {
+    padding-left: 2ch;
+    position: relative;
 }
 
 .screen {

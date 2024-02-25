@@ -2,7 +2,7 @@
 TITLE=File listing
 BACKLINK=false
 ```
-Available files:[color=sys][speed=0]
+[color=white]Available files:[color=sys][speed=0]
 --- BEGIN ---[speed=default]
 
 [button=Person/Nathan.md;Person/Nathan Wilkerson]
@@ -14,12 +14,11 @@ Available files:[color=sys][speed=0]
 
 [speed=0]--- END ---[speed=default]
 
-[block=warning][color=warn]Warning:[color=white] 
-[block=warning]These files are classified. 
-[block=warning]Misuse is punishable by law and 
-[block=warning]may be prosecuted as treason.
-[block=none]
+[/color][color=warn][block=warning]Warning:
+These files are classified. Misuse is punishable by law and may be prosecuted as treason.
+[/block][/color]
 [color=sys][speed=0]-----------------------------------------------------[speed=default]
-[color=white]Access level: L3[color=sys]
-[speed=0]-----------------------------------------------------[speed=default]
+[/color]Access level: L3[color=sys]
+[speed=0]-----------------------------------------------------[speed=default][/color]
+[/color]
 ```

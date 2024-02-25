@@ -2,5 +2,5 @@
 TITLE=Company/The Syndicate
 BACKLINK=true
 ```
-[color=red]{DATA UNAVAILABLE - CONTACT ENGINEERING}[color=white]
+[color=red]{DATA UNAVAILABLE - CONTACT ENGINEERING}[/color]
 ```
