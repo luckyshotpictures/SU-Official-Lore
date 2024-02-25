@@ -25,11 +25,23 @@ public static class Helpers
     /// </summary>
     /// <param name="content"></param>
     /// <returns></returns>
-    public static string ParseContent(string content)
+    public static string ParseContent(string content, bool isFirefox)
     {
         // First we escape any HTML tags
         content = content.Replace("<", "&lt;");
         content = content.Replace(">", "&gt;");
+    
+        // Since white-space-collapse is not supported in Firefox, we need to replace all new lines with <br> tags
+        if (isFirefox)
+        {
+            content = content.Replace("\n", "<br>");
+            // We also need to replace all double spaces with &nbsp;
+            content = content.Replace("  ", "&nbsp; ");
+            // as well as tabs
+            content = content.Replace("\t", "&nbsp;&nbsp;&nbsp;&nbsp;");
+            // This makes it mostly work, but it's not perfect agh
+            // TODO: Fix firefox support
+        }
         
         // Then we replace the placeholders
         content = content.Replace("[date]", GetCurrentDate());

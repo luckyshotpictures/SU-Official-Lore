@@ -214,7 +214,8 @@
         var content = responseString.ToCharArray();
         try
         {
-            content = Helpers.ParseContent(responseString).ToCharArray();
+            var isFirefox = await JsRuntime.InvokeAsync<bool>("isFirefox");
+            content = Helpers.ParseContent(responseString, isFirefox).ToCharArray();
         }
         catch (Exception e)
         {

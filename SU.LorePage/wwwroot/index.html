@@ -85,6 +85,11 @@
                 console.error(`Element with id content_${id} not found`);
             }
         }
+        
+        function isFirefox() {
+            return navigator.userAgent.toLowerCase().indexOf('firefox') > -1;
+        }
+        
     </script>
 </body>
 
